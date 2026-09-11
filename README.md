@@ -1,4 +1,4 @@
-﻿# CLYVO VET — Componente de Inteligência Artificial Generativa
+﻿# PETHUB — Componente de Inteligência Artificial Generativa
 
 Documentação técnica do componente de IA do projeto **PetHub** para a CLYVO, desenvolvido para o Sprint 3 da disciplina **Disruptive Architectures: IoT, IoB & Generative AI** — FIAP.
 
@@ -12,7 +12,10 @@ Documentação técnica do componente de IA do projeto **PetHub** para a CLYVO, 
 | Lucas Figueiredo Vieira | RM561342 | 2TDSPV |
 
 ---
+## 🧪 Protótipo em Python (ai_service.py)
+Junto a esta documentação, disponibilizamos o arquivo ai_service.py como uma **Prova de Conceito (PoC) / Protótipo**. Este script foi desenvolvido para validar a lógica de negócios da IA — incluindo a engenharia de prompts, injeção de contexto e formatação do JSON de saída do Gemini. Todo o fluxo funcional desenhado neste arquivo Python serve como base arquitetural e será traduzido e migrado nativamente para o Backend Java (GeminiService) nas próximas iterações.
 
+---
 
 ## Links e Repositórios
 O ecossistema PetHub é descentralizado em diferentes serviços. Acesse os repositórios abaixo:
@@ -24,8 +27,6 @@ O ecossistema PetHub é descentralizado em diferentes serviços. Acesse os repos
 > **📌 Nota sobre o código-fonte de Inteligência Artificial:**
 > Não possuímos um repositório isolado contendo "apenas o código da IA". A inteligência artificial foi projetada como uma ferramenta core do sistema e, portanto, está embarcada diretamente na nossa arquitetura. Toda a lógica de montagem de prompts, integração com o SDK do Google Gemini e conversão das respostas estruturadas reside dentro do repositório do **Backend Java** e nos nós do **n8n**. Este repositório atual (pethub-ia) concentra exclusivamente a documentação arquitetural.
 > 
-> **🧪 Protótipo em Python (ai_service.py):**
-> Junto a esta documentação, disponibilizamos o arquivo ai_service.py como uma **Prova de Conceito (PoC) / Protótipo**. Este script foi desenvolvido para validar a lógica de negócios da IA — incluindo a engenharia de prompts, injeção de contexto e formatação do JSON de saída do Gemini. Todo o fluxo funcional desenhado neste arquivo Python serve como base arquitetural e será traduzido e migrado nativamente para o Backend Java (GeminiService) nas próximas iterações.
 
 ---
 ## 1. Problemática
@@ -64,8 +65,8 @@ Para ilustrar a experiência prática com a plataforma, o diagrama a seguir mape
 
 O fluxo demonstra como o sistema conecta os dois perfis em um ciclo contínuo de cuidado: a jornada inicia-se no acompanhamento e agendamento pelo tutor, passa pelo atendimento clínico, onde a Inteligência Artificial atua nos bastidores transcrevendo o áudio e gerando a documentação médica para revisão do profissional, e se encerra com o envio de lembretes preventivos e personalizados de volta ao tutor via WhatsApp, fechando o ciclo de engajamento e saúde do pet.
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de jornada do usuário] -->
-![Diagrama de jornada do usuário](./jornada-usuario.png)
+> Diagrama de jornada do usuário
+<img width="768" height="1376" alt="fluxo-usuario" src="https://github.com/user-attachments/assets/593b844e-c47c-4d0b-a5a3-bbbbbc1f4633" />
 
 ---
 
@@ -75,11 +76,11 @@ A camada de apresentação é o App Mobile em React Native, que serve tanto o tu
 A camada de aplicação contém três serviços: o Backend Responsável em .NET, responsável pelas regras de negócio do tutor, como agendamento, lembretes e histórico; o Backend Veterinário em Java com Spring Boot, responsável pelas regras clínicas, gerenciamento de prontuários e pela integração com o Agente LLM para geração de documentos; e o n8n, que opera como agente de chat diagnóstico, recebendo mensagens do veterinário via Webhook, buscando dados do pet no MongoDB e chamando o Gemini para gerar insights diagnósticos.
 A camada de persistência é o MongoDB, banco de dados único compartilhado pelos dois backends, onde são armazenados todos os dados clínicos: pets, consultas, diagnósticos, exames, vacinas, lembretes e prontuários.
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de arquitetura de componentes] -->
-![Diagrama de arquitetura de componentes](./arquitetura-componentes.png)
+> Diagrama de arquitetura de componentes
+<img width="1234" height="810" alt="image" src="https://github.com/user-attachments/assets/b0ea24f5-bb4f-46df-87a7-1092b2f8f7b8" />
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de arquitetura de integração] -->
-![Diagrama de arquitetura de integração](./arquitetura-integracao.png)
+> Diagrama de arquitetura de integração
+<img width="1234" height="810" alt="image" src="https://github.com/user-attachments/assets/f40eb39f-001a-4a43-a531-965dc6a072dc" />
 
 ### 3.1 Fluxo de Dados: Geração de Documentos por Consulta
 O fluxo de geração de documentos com IA começa no app mobile, quando o veterinário inicia uma consulta presencial ou teleconsulta. O app grava o áudio do atendimento e realiza a transcrição localmente via Speech-to-Text nativo do dispositivo.
@@ -88,11 +89,11 @@ A transcrição em texto é enviada para o Backend do Veterinário (Java/Spring 
 
 Os documentos retornam para o app, onde o veterinário revisa, edita se necessário e confirma. Somente após a confirmação os documentos são salvos no MongoDB, atualizando o prontuário e o histórico do pet.
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de fluxo de dados do App Mobile] -->
-![Diagrama de fluxo de dados do App Mobile](./fluxo-app-mobile.png)
+> Diagrama de fluxo de dados do App Mobile
+<img width="1980" height="504" alt="image" src="https://github.com/user-attachments/assets/c606ec87-4a0b-4418-9246-d94eff2421f2" />
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de fluxo de dados do backend do Veterinário] -->
-![Diagrama de fluxo de dados do backend do Veterinário](./fluxo-backend-veterinario.png)
+> Diagrama de fluxo de dados do backend do Veterinário
+> <img width="2383" height="419" alt="image" src="https://github.com/user-attachments/assets/0f4a799c-45c2-4dd4-8c67-d88309387d4f" />
 
 #### 3.1.1 Dados Utilizados pela IA Para a Geração de Documentos
 Para garantir personalização real, precisamos dos dados anteriores do pet. A dosagem de medicamentos na receita usa o peso; o auxílio diagnóstico usa a espécie e predisposições da raça. Então utilizamos:
@@ -106,14 +107,17 @@ Dentro do n8n, o agente busca os dados do pet diretamente no MongoDB para contex
 
 Todo o processamento ocorre dentro do n8n, sem passar pelo Backend do Veterinário.
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Diagrama de fluxo de dados da integração n8n] -->
-![Diagrama de fluxo de dados da integração n8n](./fluxo-n8n.png)
+> Diagrama de fluxo de dados da integração n8n](./fluxo-n8n.png)
+<img width="1707" height="585" alt="image" src="https://github.com/user-attachments/assets/53818c03-c39f-484b-9fbd-317e2d5e9692" />
 
-<!-- [COLOQUE A IMAGEM ABAIXO: Fluxo do n8n Print] -->
-![Fluxo do n8n](./print-n8n.png)
+> Fluxo do n8n]
+<img width="760" height="436" alt="Captura de tela 2026-09-11 140153" src="https://github.com/user-attachments/assets/50ac8ee5-4669-445e-b5fb-98343093446c" />
 
 #### 3.2.1 Dados Utilizados pela IA Para o Chat Diagnóstico
 Para permitir que o veterinário faça perguntas baseadas no contexto longitudinal real do animal, não em um modelo genérico, usamos:
 *   **Histórico Clínico (MongoDB):** Consultas anteriores, diagnósticos, vacinas, exames e lembretes ativos.
 
+---
+## Link para o video no Youtube
 
+[[Video](https://youtu.be/zOTmP2l33HA)]
