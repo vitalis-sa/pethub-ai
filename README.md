@@ -4,7 +4,7 @@ Documentação do componente de IA do projeto **PetHub**, desenvolvido pela equi
 
 ## Vídeo da entrega
 
-**▶ [Assista ao vídeo no YouTube](COLAR_O_LINK_DO_VIDEO_AQUI)**
+**▶ [Assista ao vídeo no YouTube](https://youtu.be/6i243IpXGac)**
 
 ## Grupo
 
@@ -24,7 +24,7 @@ O PetHub é dividido em serviços, cada um com seu repositório.
 
 * **Aplicativo móvel (React Native e Expo):** [2tdspv-challenge-vitalis](https://github.com/FIAP-MOBILE-2026-Fevereiro/2tdspv-challenge-vitalis)
 * **Serviço clínico (Java e Spring Boot):** [pethub-java](https://github.com/vitalis-sa/pethub-java)
-* **Serviço do responsável (.NET):** [PetHub-.NET](https://github.com/vitalis-sa/PetHub-.NET)
+* **Serviço do responsável (.NET):** [PetHub-.NET](https://github.com/vitalis-sa/pethub-dotnet)
 * **Chat com IA (n8n):** [workflow no n8n](https://afcamelo.app.n8n.cloud/workflow/bRvrj0arRA6AjDco)
 
 > **Onde está o código da IA.** Não existe um repositório só com o código da IA, porque ela faz parte da arquitetura. A montagem dos prompts e a integração com o modelo ficam no serviço clínico (`pethub-java`), e o chat com IA fica nos nós do n8n. Este repositório reúne a documentação.
@@ -85,7 +85,7 @@ A jornada começa no agendamento pelo responsável, que recebe a confirmação p
 
 > Figura 1: diagrama de jornada do usuário
 
-<!-- TODO: trocar pela nova imagem da jornada (a anterior citava WhatsApp). -->
+<img width="820" height="1391" alt="Jornada do usuário@1x" src="https://github.com/user-attachments/assets/c7e36b2f-01d7-4591-a048-79f3f84e4bf6" />
 
 ---
 
@@ -101,11 +101,11 @@ Os dados ficam no Oracle da FIAP, onde cada serviço mantém as próprias tabela
 
 > Figura 2: diagrama de arquitetura de componentes
 
-<img width="1234" height="810" alt="Diagrama de arquitetura de componentes" src="https://github.com/user-attachments/assets/b0ea24f5-bb4f-46df-87a7-1092b2f8f7b8" />
+<img width="1388" height="720" alt="image" src="https://github.com/user-attachments/assets/c3b63643-97ee-4496-ab67-b08b613d5a95" />
 
 > Figura 3: diagrama de arquitetura de integração
 
-<img width="1234" height="810" alt="Diagrama de arquitetura de integração" src="https://github.com/user-attachments/assets/f40eb39f-001a-4a43-a531-965dc6a072dc" />
+<img width="1388" height="720" alt="image" src="https://github.com/user-attachments/assets/e4c0660f-257f-4f41-bdbc-4a1044cbe79a" />
 
 <!-- TODO: se os diagramas das Figuras 2 a 6 foram refeitos no Miro, trocar as imagens por esses prints. -->
 
@@ -119,11 +119,11 @@ O veterinário revisa e edita o rascunho. Ao aprovar, o resultado é gravado no 
 
 > Figura 4: diagrama de fluxo de dados do aplicativo móvel
 
-<img width="1980" height="504" alt="Fluxo de dados do aplicativo" src="https://github.com/user-attachments/assets/c606ec87-4a0b-4418-9246-d94eff2421f2" />
+<img width="2108" height="474" alt="image" src="https://github.com/user-attachments/assets/75543763-3528-4c3e-95da-286355469431" />
 
 > Figura 5: diagrama de fluxo de dados do backend do veterinário
 
-<img width="2383" height="419" alt="Fluxo de dados do backend do veterinário" src="https://github.com/user-attachments/assets/0f4a799c-45c2-4dd4-8c67-d88309387d4f" />
+<img width="1882" height="531" alt="image" src="https://github.com/user-attachments/assets/ff717b15-066a-49cc-b4f6-3116a307bd0b" />
 
 #### 3.1.1 Dados utilizados pela IA para a geração de documentos
 
@@ -139,11 +139,11 @@ Dentro do n8n, o agente busca o prontuário do pet no Oracle, monta o prompt com
 
 > Figura 6: diagrama de fluxo de dados da integração com o n8n
 
-<img width="1707" height="585" alt="Fluxo de dados da integração com o n8n" src="https://github.com/user-attachments/assets/53818c03-c39f-484b-9fbd-317e2d5e9692" />
+<img width="1601" height="624" alt="image" src="https://github.com/user-attachments/assets/bbec5c2b-91eb-4054-a6c8-0deb3824c265" />
 
 > Figura 7: workflow do n8n
 
-<img width="760" height="436" alt="Workflow do n8n" src="https://github.com/user-attachments/assets/50ac8ee5-4669-445e-b5fb-98343093446c" />
+<img width="779" height="442" alt="image" src="https://github.com/user-attachments/assets/7e768b3b-8f4d-453f-a690-f0d4cbcee985" />
 
 #### 3.2.1 Dados utilizados pela IA para o chat diagnóstico
 
@@ -157,7 +157,7 @@ No segundo, os lembretes, o serviço clínico publica uma mensagem no RabbitMQ d
 
 > Figura 8: diagrama de fluxo de dados do backend do responsável
 
-<!-- TODO: adicionar o print do fluxo .NET do Miro. -->
+<img width="2068" height="483" alt="image" src="https://github.com/user-attachments/assets/3b10a92f-7893-442c-9db3-b573ff2a3749" />
 
 ---
 
@@ -207,4 +207,4 @@ React Native com Expo, TypeScript, Java com Spring Boot, .NET 10, Oracle, MongoD
 
 ## Vídeo da entrega
 
-**▶ [Assista ao vídeo no YouTube](COLAR_O_LINK_DO_VIDEO_AQUI)**
+**▶ [Assista ao vídeo no YouTube](https://youtu.be/6i243IpXGac)**
